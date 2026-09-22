@@ -1,0 +1,13 @@
+# Buildozer
+.buildozer/
+bin/
+*.pyc
+__pycache__/
+
+# Entorno virtual
+venv/
+env/
+
+# Sistema
+.DS_Store
+*.log
