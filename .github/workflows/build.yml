@@ -1,3 +1,4 @@
+cat > ~/pyvpn/.github/workflows/build.yml << 'EOF'
 name: Build APK
 
 on:
@@ -27,9 +28,11 @@ jobs:
 
       - name: Compilar APK
         run: |
-                      buildozer android debug
+          buildozer android debug
+
       - name: Subir APK como artefacto
         uses: actions/upload-artifact@v4
         with:
           name: pyvpn-apk
           path: bin/*.apk
+EOF
