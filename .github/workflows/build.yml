@@ -17,10 +17,16 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: Instalar dependencias
         run: |
           sudo apt update
-          sudo apt install -y git zip unzip openjdk-17-jdk autoconf libtool pkg-config zlib1g-dev libncurses-dev libtinfo6 cmake libffi-dev libssl-dev
+          sudo apt install -y git zip unzip autoconf libtool pkg-config zlib1g-dev libncurses-dev libtinfo6 cmake libffi-dev libssl-dev
 
       - name: Instalar Buildozer
         run: |
@@ -28,7 +34,8 @@ jobs:
           pip install buildozer cython
 
       - name: Compilar APK
-        run: buildozer android debug
+        run: |
+          buildozer android debug
 
       - name: Subir APK
         if: always()
